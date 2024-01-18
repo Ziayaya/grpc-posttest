@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "../proto";
+
+package notif;
+
+service NotifService {
+    rpc GetFruitInfo (FruitRequest) returns (stream FruitResponse);
+    rpc GetPoetryInfo (PoetryRequest) returns (stream PoetryResponse);
+}
+
+message FruitRequest {
+    string name = 1;
+}
+
+message PoetryRequest {
+    int32 linecount = 1;
+}
+
+message NutritionInfo {
+    float calories = 1;
+    float fat = 2;
+    float sugar = 3;
+    float carbohydrates = 4;
+    float protein = 5;
+}
+
+message FruitResponse {
+    string name = 1;
+    int32 id = 2;
+    string family = 3;
+    string order = 4;
+    string genus = 5;
+    NutritionInfo nutritions = 6;
+}
+
+message PoetryResponse {
+    string title = 1;
+    string author = 2;
+    repeated string lines = 3;
+    string linecount = 4;
+}
+
